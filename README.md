@@ -1,10 +1,10 @@
 # Detection and Exploitation of Vulnerabilities in Android Applications Using Large Language Models and Model Context Protocol
 
-This repository contains the code for my master thesis project _Detection and Exploitation of Vulnerabilities in Android Applications Using Large Language Models and Model Context Protocol_. This repository includes the two agents inplemented in the code directory, as well as the templates for the rules and the verification scripts.
+This repository contains the code for my master's thesis project, _Detection and Exploitation of Vulnerabilities in Android Applications Using Large Language Models and Model Context Protocol_. This repository includes the two agents implemented in the code directory, as well as the templates for the rules and the verification scripts.
 
-This project is strcutured into two parts: in the first part, I leverage LLMs and MCP servers to detect violations of Google security guidelines in Android applications. In the second part, I generate Proof-of-Concept (PoC) exploits to test whether the violations are exploitable. 
+This project is structured into two parts: in the first part, I leverage LLMs and MCP servers to detect violations of Google security guidelines in Android applications. In the second part, I generate Proof-of-Concept (PoC) exploits to test whether the violations are exploitable. 
 
-Both agemts were tested against 10 real-world applications that have already been analyzed with the static analysis tool [SPECK](https://github.com/SPRITZ-Research-Group/SPECK), and 31 rules defined from the [Google Security Guidelines](https://developer.android.com/privacy-and-security/security-tips). 
+Both agents were tested against 10 real-world applications that have already been analyzed with the static analysis tool [SPECK](https://github.com/SPRITZ-Research-Group/SPECK), and 31 rules defined from the [Google Security Guidelines](https://developer.android.com/privacy-and-security/security-tips). 
 
 For the vulnerability detection part, I gave each rule to the LLM, along with the APK file decompiled with JADX (using the JADX MCP server to extract the code), and asked it to detect rule violations. I compared the results with the results of SPECK. 
 
