@@ -1,0 +1,20 @@
+[project]
+name = "jadx-mcp"
+version = "0.1.0"
+description = "JADX MCP Detect and Exploit Tool"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "dotenv",
+    "logfire",
+    "pydantic",
+    "pydantic-ai",
+    "httpx",
+    "asyncio",
+    "argparse",
+    "pandas",
+    "sympy",
+    "jinja2",
+    "langchain_community",
+    "pyyaml"
+]

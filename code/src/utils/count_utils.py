@@ -76,17 +76,11 @@ def get_counts_for_rule(apk_name: str, rule_number: int,llm_output: dict) -> Sin
     total_ground_truth = df1_count["Original Count"].sum()
     total_llm_ground_truth = 0
     
-    for index, row in df2_count.iterrows():
+    for _, row in df2_count.iterrows():
         class_name = row["class"]
         rule_number = row["rule"]
 
-        original_count = 0
-
-        if class_name.split(".")[0] == "kotlin":
-            alternative_class_name = class_name.replace("kotlin", "o",1)
-            original_count = df1_count.loc[(df1_count["Class"] == class_name) | (df1_count["Class"] == alternative_class_name)].values
-        else:
-            original_count = df1_count.loc[(df1_count["Class"] == class_name)].values
+        original_count = df1_count.loc[(df1_count["Class"] == class_name)].values
             
         original_count_actual = original_count[0][2] if len(original_count) > 0 else 0
         
@@ -107,42 +101,3 @@ def calculate_single_precision_recall(single_rule : SingleRuleResult) -> tuple[f
     recall = (single_rule.ground_truths_found / single_rule.total_ground_truths) if single_rule.total_ground_truths > 0 else 0.0
     return precision, recall
 
-def filter_ground_truths_by_rule(df: list[dict], rule_number: int, apk_name: str) -> list[dict]:
-    if df == []:
-        return []
-    df1 = pd.DataFrame(df)
-    df1["rule"] = df1["rule"].astype(int)
-    df1 = df1.loc[df1["rule"] == rule_number]
-
-    df1["class"] = df1["class"].str.split().str[0].astype(str)
-    
-    df2 = pd.read_json(JSON_FILE_ORIGINAL, dtype=str)
-    
-    df2 = df2.loc[df2["apk"] == f"/mydata/apks/{apk_name}"]
-    
-    df2 = df2.loc[df2["comment"] != "duplicate"]
-    
-    if rule_number >= 13:
-        rule_number += 1
-    df2 = df2.loc[df2["rule"] == str(rule_number)]
-    df_copy = df1.copy()
-    df2["Class"] = df2["file"].str.replace(f"/mydata/apks/{apk_name}/sources/", "").str.replace(f"/mydata/apks/{apk_name}/resources/", "").str.replace(".java", "").str.replace("/", ".")
-    indexes_to_drop = []
-    for index, row in df_copy.iterrows():
-        class_name = row["class"]
-        rule_n = row["rule"]
-        df2_loc = None
-        if class_name.split(".")[0] == "kotlin":
-            alternative_class_name = class_name.replace("kotlin", "o",1)
-            df2_loc = df2.loc[(df2["Class"] == class_name) | (df2["Class"] == alternative_class_name)]
-        else:
-            df2_loc = df2.loc[(df2["Class"] == class_name)]
-
-        if df2_loc.shape[0] == 0:
-            indexes_to_drop.append(index)
-            continue
-    
-    df1.drop(indexes_to_drop, inplace=True)
-    df1.drop_duplicates(subset=["rule", "severity", "class", "method_or_service"], inplace=True)
-    
-    return df1.to_dict(orient="records")
