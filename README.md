@@ -12,4 +12,4 @@ For the exploit generation part, the agent developed attacks affecting insecure 
 
 For the overall results, the detection agent achieved a mean precision of 63.90% and a mean recall of 53.97%. For the Automated Exploit Generation part, I achieved a PoC success rate of 30.45% across 266 vulnerabilities.
 
-The full thesis can be found [here](./thesis.pdf) (in Italian). The code is available under the MIT License.
+The full thesis can be found [here](./thesis.pdf). The code is available under the MIT License.
