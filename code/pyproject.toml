@@ -16,5 +16,6 @@ dependencies = [
     "sympy",
     "jinja2",
     "langchain_community",
-    "pyyaml"
+    "pyyaml",
+    "androguard"
 ]
