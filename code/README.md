@@ -1,6 +1,6 @@
 # Agents Source Code
 
-This folder contains the source code of the two agents implemented for the thesis project. The first agent is responsible for detecting vulnerabilities in Android applications using LLMs and the [JADX AI MCP Plugin](https://github.com/zinja-coder/jadx-ai-mcp), while the second agent is responsible for generating Proof-of-Concept (PoC) exploits to test whether the detected vulnerabilities are exploitable.
+This folder contains the source code of the two agents implemented for the thesis project. The first agent is responsible for detecting vulnerabilities in Android applications using LLMs and the [JADX AI MCP Plugin](https://github.com/zinja-coder/jadx-ai-mcp), while the second agent is responsible for generating Proof-of-Concept (PoC) exploits to test whether the detected vulnerabilities are exploitable. For setting up the LLM and querying it, I used [Pydantic AI](https://pydantic.dev/docs/ai/overview/) to define the expected output format and to set up the MCP connection. 
 
 ## Requirements
 
