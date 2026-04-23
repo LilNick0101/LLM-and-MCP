@@ -96,6 +96,6 @@ For exploit generation the following additional environment variables are requir
 - `ANDROID_AVD`: the name of the Android Virtual Device (AVD) to be used for testing exploits on an emulator.
 - `PROXY_IP`: the IP address of the machine running mitmdump, used for network traffic analysis attacks.
 - `PROXY_PORT`: the port number on which mitmdump is listening, used for network traffic analysis attacks.
-- `ANDROID_SDK`: the path to the Android SDK, used for building and deploying repackaged APKs (optional).
+- `ANDROID_HOME`: the path to the Android SDK, used for building and deploying repackaged APKs (optional).
 
 For generating exploits for network communication vulnerabilities, it is also necessary to create fake SSL certificates for the target application and install them on the testing device (emulator or physical device). The files should be placed in the `certs` directory with the name `fake_cert.pem` and `fake_key.pem`.
